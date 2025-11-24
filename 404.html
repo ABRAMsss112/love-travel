@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="uk">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:wght@400;700&family=Raleway:ital,wght@0,303;1,303&family=Unbounded&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins&family=Raleway:ital,wght@0,303;1,303&family=Reenie+Beanie&family=Unbounded&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:wght@200&display=swap" rel="stylesheet">
+        <title>Контакти</title>
+        <link rel="stylesheet" href="scss/contact.css">
+        <link rel="stylesheet" href="scss/style.css">
+        <link rel="icon" type="image/png" href="favicon.png" />
+    </head>
+    <body>
+        <div class="container">
+            <nav>
+                <a href="index.html">
+                        <img src="img/logo.png" alt="">
+                    </a>
+                <ul>
+                    <li>
+                        <ul>
+                            <li class="dropdown">
+                                <a href="index.html">Головна</a>
+                                
+                            </li>
+                            
+                            <li class="dropdown">
+                                <a href="archive.html">Тури</a>
+                                
+                            </li>
+                            
+                            <li class="dropdown">
+                                <a href="blog.html">Блог</a>
+                                
+                            </li>
+                            <li><a href="contact.html">Контакти</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <section class="off-screen-menu">
+                    <ul>
+                        <li>
+                            <ul>
+                                <li >
+                                    <a href="index.html">Головна</a>
+                                    
+                                </li>
+
+                                <li >
+                                    <a href="archive.html">Тури</a>
+                                  </li>
+  
+                                <li >
+                                    <a href="blog.html">Блог</a>
+                                    </li>
+                                <li><a href="contact.html">Контакти</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    
+                </section>
+                <div class="burger">
+                    <div class="ham-menu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+                <button id="modalBtn">
+                    Пошук
+                </button>
+            </nav> 
+            <header class="error">
+                <h1>404</h1>
+                
+                   <a href="index.html" style="display:block; height: 51px;
+                   background: #1BBC9B; padding: 0 20px;
+                   border-radius: 5px; line-height: 51px;
+                   color: white;"> Повернутись на головну </a>
+                
+            </header>
+            
+            <footer>
+                <h1>
+                    Подорожуйте за межі уяви разом із нашою тревел-агенцією!
+                </h1>
+                <section class="footer_address">
+                    <ul>
+                        <li>
+                            <h2>Адреса</h2>
+                        </li>
+                        <li>
+                            <p>Україна</p>
+                        </li>
+                        <li>
+                            <p>Івано-Франківськ</p>
+                        </li>
+                        <li>
+                            <p>Вовчинецька, 225</p>
+                        </li>
+                    </ul>
+                    <div class="footer_icons">
+                        <img src="img/facebook_footer.png" alt="social media icon">
+                        <img src="img/twitter_footer.png" alt="social media icon">
+                        <img src="img/youtube_footer.png" alt="social media icon">
+                    </div>
+                </section>
+                <section class="footer_contact">
+                    <h2>Контакти</h2>
+                    <button> <a href="mailto:info@travel.com" style="color:white;"> info@travel.com </a></button>
+                    <p> <a href="tel:+380999999999" style="color:white;"> +38 099 999 99 99 </a></p>
+                </section>
+            </footer>
+        </div>
+
+
+<!-- Модалка пошуку туру -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+      <button class="close-btn" id="closeModal">&times;</button>
+  
+      <h2>Пошук туру</h2>
+  
+      <form id="tourSearchForm">
+        <label>Введіть напрямок</label>
+        <input type="text" placeholder="Наприклад: Таїланд">
+  
+        <label>Тип подорожі</label>
+        <select>
+          <option selected>Будь-який</option>
+          <option>Пляжний відпочинок</option>
+          <option>Екскурсійний тур</option>
+          <option>Пригодницький тур</option>
+          <option>Гірськолижний відпочинок</option>
+        </select>
+  
+        <label>Кількість днів</label>
+        <input type="number" placeholder="Наприклад: 7">
+  
+        <button type="submit" class="search-btn">Шукати</button>
+      </form>
+    </div>
+  </div>
+
+        <script src="js/contact.js"></script>
+    </body>
+</html>

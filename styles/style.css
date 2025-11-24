@@ -1,0 +1,1745 @@
+@charset "UTF-8";
+* {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  text-decoration: none;
+  list-style-type: none;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+button {
+  cursor: pointer;
+}
+
+.container .bg {
+  background-color: #F2F2F2;
+}
+.container .bg nav {
+  width: 70%;
+  display: flex;
+  align-items: center;
+  margin: 0 auto 200px;
+  justify-content: space-evenly;
+  position: relative;
+}
+.container .bg nav ul {
+  display: flex;
+  align-items: center;
+  list-style-type: none;
+  gap: 55px;
+  padding: 0;
+  margin: 0;
+}
+.container .bg nav ul li {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.container .bg nav ul li::after {
+  content: "•";
+  color: #1BBC9B;
+  font-size: 1.5rem;
+  position: relative;
+  left: 26px;
+}
+.container .bg nav ul li:last-child::after {
+  content: "";
+}
+.container .bg nav ul li.dropdown .submenu li::after {
+  content: "";
+}
+.container .bg nav ul li a {
+  font-weight: 400;
+  color: black;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+}
+.container .bg nav ul li a span {
+  font-weight: 400;
+  color: #1BBC9B;
+}
+.container .bg nav ul li a:hover {
+  color: #00d2b4;
+  transition: 0.4s ease;
+}
+.container .bg nav ul li.dropdown a {
+  position: relative;
+}
+.container .bg nav ul li.dropdown .submenu {
+  width: 120px;
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: -30px;
+  background-color: #333;
+  list-style: none;
+  margin: 0;
+  padding: 10px 0;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  line-height: 30px;
+}
+.container .bg nav ul li.dropdown .submenu li {
+  padding: 5px 20px;
+}
+.container .bg nav ul li.dropdown .submenu li a {
+  color: #fff;
+  font-size: 13px;
+  display: block;
+}
+.container .bg nav ul li.dropdown .submenu li a:hover {
+  color: #00d2b4;
+  transition: 0.3s ease;
+}
+.container .bg nav ul li.dropdown .submenu:last-child::after {
+  content: "";
+}
+.container .bg nav ul li.dropdown .bigger_submenu {
+  width: 130px;
+}
+.container .bg nav ul li.dropdown .smaller_submenu {
+  width: 80px;
+  position: absolute;
+  left: -13px;
+}
+.container .bg nav ul li.dropdown:hover .submenu {
+  display: block;
+}
+.container .bg nav .off-screen-menu {
+  background: #F2F2F2;
+  box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.1);
+  height: 100%;
+  width: 100%;
+  max-width: 450px;
+  position: fixed;
+  top: 0;
+  right: -450px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: 0.3s ease;
+  border-radius: 0 0 15px 15px;
+  z-index: 1;
+  overflow: auto;
+  padding-top: 90px;
+  box-sizing: border-box;
+  padding-bottom: 55px;
+}
+.container .bg nav .off-screen-menu .logo {
+  margin-left: 35px;
+}
+.container .bg nav .off-screen-menu .burger_desc {
+  width: 170px;
+  font-size: 16px;
+  font-weight: 400;
+  color: #6E6E6E;
+  text-align: center;
+}
+.container .bg nav .off-screen-menu .burger_gallery .row img {
+  margin: 10px;
+  border-radius: 15px;
+}
+.container .bg nav .off-screen-menu .contacts {
+  display: flex;
+  flex-direction: column;
+}
+.container .bg nav .off-screen-menu .contacts h1 {
+  font-size: 21px;
+  font-weight: 700;
+}
+.container .bg nav .off-screen-menu .contacts .title_txt {
+  color: black;
+  font-weight: 700;
+  font-size: 18px;
+}
+.container .bg nav .off-screen-menu .contacts p {
+  font-size: 16px;
+  font-weight: 400;
+  color: #6E6E6E;
+  width: 300px;
+}
+.container .bg nav .off-screen-menu .icons p {
+  font-size: 21px;
+  font-weight: 700;
+  color: black;
+}
+.container .bg nav .off-screen-menu .icons .images {
+  display: flex;
+  gap: 10px;
+}
+.container .bg nav .off-screen-menu .icons .images .img_bg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  width: 50px;
+  height: 50px;
+  background: #1BBC9B;
+}
+.container .bg nav .off-screen-menu .icons .images .img_bg:hover {
+  background: #434A54;
+  transition: 0.3s ease;
+}
+.container .bg nav .off-screen-menu.active {
+  right: 0;
+}
+.container .bg nav .off-screen-menu.active ul {
+  display: none;
+}
+.container .bg nav .burger {
+  padding: 1rem;
+  display: flex;
+}
+.container .bg nav .ham-menu {
+  height: 50px;
+  width: 40px;
+  margin-left: auto;
+  position: relative;
+  cursor: pointer;
+}
+.container .bg nav .ham-menu span {
+  height: 5px;
+  width: 100%;
+  background-color: black;
+  border-radius: 25px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  transition: 0.3s ease;
+}
+.container .bg nav .ham-menu span:nth-child(1) {
+  top: 25%;
+}
+.container .bg nav .ham-menu span:nth-child(3) {
+  top: 75%;
+}
+.container .bg nav button {
+  width: 110px;
+  height: 44px;
+  border-radius: 5px;
+  background: #1BBC9B;
+  border: none;
+}
+.container .bg nav button a {
+  color: white;
+  font-size: 13px;
+  font-weight: 700;
+}
+.container .bg header {
+  background-image: url("../img/header.png");
+  height: 740px;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  margin-bottom: 200px;
+}
+.container .bg header .square_header {
+  width: 100px;
+  height: 100px;
+  background: #D9D9D9;
+  margin-left: -27px;
+}
+.container .bg header .header_info {
+  width: 1300px;
+  display: flex;
+  flex-direction: column;
+  translate: 19% -11%;
+}
+.container .bg header .header_info .line {
+  background: #F1F1F1;
+  width: 1px;
+  height: 60px;
+  position: relative;
+  left: -24px;
+}
+.container .bg header .header_info p {
+  font-size: 16px;
+  color: #6E6E6E;
+  translate: 0% 200%;
+  margin-left: -6px;
+  font-weight: 400;
+}
+.container .bg header .header_info h1 {
+  font-size: 72px;
+  width: 530px;
+  line-height: 86px;
+  font-weight: bolder;
+}
+.container .bg header .header_info .highlighted_text {
+  display: inline-block;
+  position: relative;
+  font-weight: bold;
+}
+.container .bg header .header_info .highlighted_text::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 13px;
+  height: 7px;
+  width: 100%;
+  background: #FFD205;
+  z-index: -1;
+}
+.container .bg header .header_info .header_nav {
+  background: #FFFFFF;
+  width: 1129.59px;
+  height: 70px;
+  padding: 20.54px 30.8px 20.54px 30.81px;
+  border-radius: 15px;
+  margin-left: -12px;
+  display: flex;
+  justify-content: space-around;
+}
+.container .bg header .header_info .header_nav .header_search {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 350px;
+  line-height: 1px;
+}
+.container .bg header .header_info .header_nav .header_search .search_txt {
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+}
+.container .bg header .header_info .header_nav .header_search .search_txt h2 {
+  font-size: 16px;
+  margin-left: -5px;
+  font-weight: bolder;
+}
+.container .bg header .header_info .header_nav .header_search .search_txt p {
+  font-size: 14px;
+}
+.container .bg header .header_info .header_nav button {
+  width: 270px;
+  height: 62px;
+  border-radius: 10px;
+  background: #1BBC9B;
+  border: none;
+  color: white;
+}
+.container main {
+  width: 100%;
+  height: auto;
+  margin-bottom: 150px;
+}
+.container main .dream_vacation {
+  display: flex;
+  justify-content: flex-end;
+}
+.container main .dream_vacation .dream_vacation_info {
+  display: flex;
+  flex-direction: column;
+}
+.container main .dream_vacation .dream_vacation_info .plan_the_trip {
+  font-size: 50px;
+  width: 700px;
+  margin-bottom: -4px;
+  color: black;
+  font-weight: 700;
+}
+.container main .dream_vacation .dream_vacation_info h2 {
+  color: #1BBC9B;
+  font-family: "Reenie Beanie", cursive;
+  font-weight: 400;
+  font-size: 29px;
+  margin-bottom: -5px;
+}
+.container main .dream_vacation .dream_vacation_info p {
+  font-weight: 400;
+  color: #6E6E6E;
+  width: 640px;
+}
+.container main .dream_vacation .dream_vacation_info button {
+  width: 126.89px;
+  height: 44px;
+  background: #1BBC9B;
+  border-radius: 5px;
+  color: white;
+  border: none;
+}
+.container main .dream_vacation img {
+  width: 900px;
+  height: 700px;
+}
+.container main .tour_blocks {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: -210px;
+}
+.container main .icons_tour_blocks {
+  display: flex;
+  justify-content: center;
+  margin-top: -100px;
+  margin-bottom: 110px;
+}
+.container main .icons_tour_blocks .block {
+  display: flex;
+  justify-content: flex-start;
+  width: 430px;
+}
+.container main .icons_tour_blocks .location {
+  padding-left: 60px;
+}
+.container main .icons_tour_blocks .mountain {
+  padding-left: 40px;
+}
+.container main .icons_tour_blocks .gate {
+  padding-left: 20px;
+}
+.container main .travel_cards {
+  display: flex;
+  gap: 32px;
+  justify-content: center;
+  padding: 40px 0;
+  margin-bottom: 100px;
+}
+.container main .travel_cards .card_item {
+  background: #FFFFFF;
+  border-radius: 15px;
+  box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  width: 418px;
+  position: relative;
+}
+.container main .travel_cards .card_item .sale_label {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #14B9D5;
+  text-align: center;
+  padding-top: 2px;
+  box-sizing: border-box;
+  color: white;
+  font-size: 14px;
+  font-weight: 400;
+  width: 64px;
+  height: 24px;
+  border-radius: 15px;
+  text-transform: uppercase;
+  z-index: 3;
+  letter-spacing: 1px;
+}
+.container main .travel_cards .card_item .second_lable {
+  background: #BA71DA;
+}
+.container main .travel_cards .card_item .location_info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  width: 100px;
+}
+.container main .travel_cards .card_item .location_info img {
+  position: relative;
+  top: -6px;
+}
+.container main .travel_cards .card_item .card_item_info {
+  padding: 20px;
+}
+.container main .travel_cards .card_item .card_item_info .card_time_destination {
+  border-radius: 5px;
+  margin: 0 auto;
+  width: 359.95px;
+  height: 41px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.container main .travel_cards .card_item .card_item_info .card_time_destination img {
+  width: 17px;
+  height: 15px;
+}
+.container main .travel_cards .card_item .card_item_info .duration {
+  display: flex;
+  justify-content: flex-start;
+  gap: 10px;
+  width: 200px;
+  height: 20px;
+}
+.container main .travel_cards .card_item .card_item_info .duration p {
+  font-weight: 400;
+  font-size: 14px;
+  color: #6E6E6E;
+  position: relative;
+  top: -13px;
+}
+.container main .travel_cards .card_item .card_item_info .duration .clock {
+  position: relative;
+  top: 3px;
+  height: 16px;
+}
+.container main .travel_cards .card_item .card_item_info .icons {
+  display: flex;
+  gap: 10px;
+}
+.container main .travel_cards .card_item .card_item_info .icons .mail {
+  height: 14px;
+  width: 19px;
+}
+.container main .travel_cards .card_item .card_item_info .card_title .card_footer_main {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.container main .travel_cards .card_item .card_item_info .card_title img {
+  width: 11px;
+  height: 15px;
+  margin-top: 10px;
+}
+.container main .travel_cards .card_item .card_item_info .card_title h2 {
+  font-size: 24px;
+  color: #333;
+}
+.container main .travel_cards .card_item .card_item_info .card_title p {
+  font-weight: 400;
+  font-size: 14px;
+  color: #6E6E6E;
+}
+.container main .travel_cards .card_item .card_item_info .card_title .line {
+  height: 1px;
+  background: #F1F1F1;
+  margin: 10px 0;
+}
+.container main .travel_cards .card_item .card_item_info .card_title .card_details_btn {
+  background: #1BBC9B;
+  color: white;
+  border: none;
+  width: 120px;
+  height: 50px;
+  border-radius: 5px;
+}
+.container main .travel_cards .card_item .card_item_info .card_title .phraya {
+  background: #14B9D5;
+}
+.container main .travel_cards .card_item .card_item_info .card_title .bangkok {
+  background: #BA71DA;
+}
+.container main .travel_cards .card_item .card_item_info .card_title .card_price {
+  display: flex;
+}
+.container main .travel_cards .card_item .card_item_info .card_title .card_price h2 {
+  font-size: 24px;
+  color: #333;
+}
+.container main .travel_cards .card_item .card_item_info .card_title .card_price p {
+  position: relative;
+  left: 68px;
+  top: -10px;
+  font-size: 14px;
+  color: #6E6E6E;
+}
+.container main .travel_cards .card_item .card_item_info .card_title .card_price .card_price_from_left_second {
+  position: relative;
+  left: 120px;
+}
+.container main .travel_cards .card_item .card_item_info .card_title .card_price .card_price_from_left_first {
+  position: relative;
+  left: 90px;
+}
+.container main .travel_cards .card_item .card_item_info .card_title .card_price .crossed_out_txt {
+  color: #6E6E6E;
+  font-size: 16px;
+  text-decoration: line-through;
+  position: relative;
+  top: 15px;
+}
+.container main .trip_search {
+  width: 100%;
+  height: 650px;
+  background: #F2F2F2;
+  margin-bottom: 150px;
+}
+.container main .trip_search .trip_search_title_subtitle {
+  padding-top: 130px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.container main .trip_search .trip_search_title_subtitle .vacation_starting {
+  font-weight: 700;
+  font-size: 35px;
+  color: black;
+}
+.container main .trip_search .trip_search_title_subtitle h2 {
+  font-family: "Reenie Beanie", cursive;
+  font-weight: 400;
+  font-size: 30px;
+  color: #1BBC9B;
+}
+.container main .trip_search .trip_search_title_subtitle p {
+  font-family: Poppins;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  text-align: center;
+  color: #6E6E6E;
+  width: 727.65px;
+  margin-bottom: 50px;
+}
+.container main .trip_search .trip_search_input {
+  width: 1300px;
+  display: flex;
+  flex-direction: column;
+  translate: 19% -11%;
+}
+.container main .trip_search .trip_search_input .line {
+  background: #F1F1F1;
+  width: 1px;
+  height: 60px;
+  position: relative;
+  left: -24px;
+}
+.container main .trip_search .trip_search_input p {
+  font-size: 16px;
+  color: #6E6E6E;
+  translate: 0% 200%;
+  margin-left: -6px;
+  font-weight: 400;
+}
+.container main .trip_search .trip_search_input h1 {
+  font-size: 72px;
+  width: 530px;
+  line-height: 86px;
+  font-weight: 700;
+  color: black;
+}
+.container main .trip_search .trip_search_input .trip_nav {
+  background: #FFFFFF;
+  width: 1129.59px;
+  height: 70px;
+  padding: 20.54px 30.8px 20.54px 30.81px;
+  border-radius: 15px;
+  margin-left: -12px;
+  display: flex;
+  margin: 0 auto;
+  align-items: center;
+  justify-content: space-around;
+}
+.container main .trip_search .trip_search_input .trip_nav .trip_nav_search {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 350px;
+  line-height: 1px;
+}
+.container main .trip_search .trip_search_input .trip_nav .trip_nav_search img {
+  width: 25px;
+  height: 35px;
+}
+.container main .trip_search .trip_search_input .trip_nav .trip_nav_search .search_img {
+  width: 30px;
+}
+.container main .trip_search .trip_search_input .trip_nav .trip_nav_search .symbol_img {
+  width: 35px;
+}
+.container main .trip_search .trip_search_input .trip_nav .trip_nav_search .search_txt {
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+}
+.container main .trip_search .trip_search_input .trip_nav .trip_nav_search .search_txt h2 {
+  font-size: 16px;
+  margin-left: -5px;
+  font-weight: bolder;
+}
+.container main .trip_search .trip_search_input .trip_nav .trip_nav_search .search_txt p {
+  font-size: 14px;
+}
+.container main .trip_search .trip_search_input .trip_nav button {
+  width: 350px;
+  height: 62px;
+  border-radius: 10px;
+  background: #F76570;
+  border: none;
+  color: white;
+}
+.container main .next_advanture {
+  width: 72%;
+  margin: 0 auto;
+  margin-bottom: 130px;
+}
+.container main .next_advanture .next_advanture_title_info {
+  display: flex;
+  flex-direction: column;
+}
+.container main .next_advanture .next_advanture_title_info h2 {
+  font-family: "Reenie Beanie", cursive;
+  color: #1BBC9B;
+  font-weight: 500;
+  font-size: 30px;
+}
+.container main .next_advanture .next_advanture_title_info .travel_destination {
+  font-size: 50px;
+  font-weight: 700;
+  line-height: 60px;
+  width: 700px;
+  color: black;
+}
+.container main .next_advanture .next_advanture_title_info p {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  color: #6E6E6E;
+  width: 634px;
+  margin-bottom: 70px;
+}
+.container main .next_advanture .next_advanture_cards {
+  display: flex;
+  justify-content: space-between;
+}
+.container main .next_advanture .next_advanture_cards .card {
+  position: relative;
+  width: 307px;
+  height: 400px;
+  border-radius: 15px;
+  color: white;
+  text-align: center;
+  padding-top: 260px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+.container main .next_advanture .next_advanture_cards .card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 15px;
+  z-index: 1;
+}
+.container main .next_advanture .next_advanture_cards .card .headline,
+.container main .next_advanture .next_advanture_cards .card .info {
+  position: relative;
+  z-index: 2;
+}
+.container main .next_advanture .next_advanture_cards .card .headline {
+  font-size: 20px;
+  font-weight: 700;
+}
+.container main .next_advanture .next_advanture_cards .card .info {
+  width: 223px;
+  font-weight: 400;
+  font-size: 14px;
+  margin: 0 auto;
+}
+.container main .next_advanture .next_advanture_cards .greece {
+  background-image: url("../img/Greece.png");
+  background-size: cover;
+  background-position: center;
+}
+.container main .next_advanture .next_advanture_cards .egypt {
+  background-image: url("../img/Egypt.png");
+  background-size: cover;
+  background-position: center;
+}
+.container main .next_advanture .next_advanture_cards .africa {
+  background-image: url("../img/Africa.png");
+  background-size: cover;
+  background-position: center;
+}
+.container main .next_advanture .next_advanture_cards .france {
+  background-image: url("../img/France.png");
+  background-size: cover;
+  background-position: center;
+}
+.container main .advanture_travel {
+  height: 840px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  background: linear-gradient(290.56deg, #000000 5%, rgba(55, 55, 55, 0.7) 30%, rgba(67, 74, 84, 0) 100%), url("../img/fff.png");
+}
+.container main .advanture_travel .advanture_travel_title_info h2 {
+  font-family: "Reenie Beanie", cursive;
+  font-weight: 500;
+  color: white;
+}
+.container main .advanture_travel .advanture_travel_title_info .row ul {
+  margin-left: -40px;
+}
+.container main .advanture_travel .advanture_travel_title_info .advanture_travel_headline {
+  font-size: 50px;
+  font-weight: 700;
+  line-height: 60px;
+  color: white;
+  width: 625px;
+}
+.container main .advanture_travel .advanture_travel_title_info .advanture_travel_txt {
+  margin-bottom: 40px;
+}
+.container main .advanture_travel .advanture_travel_title_info p {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  color: white;
+  width: 607px;
+}
+.container main .advanture_travel .advanture_travel_title_info .line {
+  width: 610px;
+  height: 1px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1803921569);
+}
+.container main .advanture_travel .advanture_travel_title_info button {
+  width: 142.58px;
+  height: 44px;
+  border: none;
+  color: white;
+  background: #1BBC9B;
+  border-radius: 5px;
+}
+.container main .image-container {
+  position: relative;
+  width: 400px;
+  height: 300px;
+  overflow: hidden;
+}
+.container main .slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+.container main .slide.active {
+  opacity: 1;
+}
+.container main .arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+}
+.container main .left-arrow {
+  left: 10px;
+}
+.container main .right-arrow {
+  right: 10px;
+}
+.container main .advanture_tavel_title_info h2 {
+  font-family: "Reenie Beanie", cursive;
+  font-weight: 500;
+  color: white;
+}
+.container main .advanture_tavel_title_info h1 {
+  font-size: 50px;
+  font-weight: 700;
+  line-height: 60px;
+  color: white;
+  width: 625px;
+}
+.container main .advanture_tavel_title_info .advanture_tavel_txt {
+  margin-bottom: 40px;
+}
+.container main .advanture_tavel_title_info p {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  color: white;
+  width: 607px;
+}
+.container main .advanture_tavel_title_info .line {
+  width: 610px;
+  height: 1px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1803921569);
+}
+.container main .advanture_tavel_title_info button {
+  width: 142.58px;
+  height: 44px;
+  border: none;
+  color: white;
+  background: #1BBC9B;
+  border-radius: 5px;
+}
+.container main .image-container {
+  position: relative;
+  width: 610px;
+  height: 600px;
+  overflow: hidden;
+}
+.container main .travel_itineraries {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 200px;
+}
+.container main .travel_itineraries .iframe {
+  width: 1260px;
+  height: 700px;
+}
+.container main .travel_itineraries .frame {
+  width: 1755px;
+  height: 845px;
+  box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.1019607843);
+  margin-bottom: 60px;
+}
+.container main .travel_itineraries h1 {
+  font-size: 90px;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 5px;
+}
+.container main .travel_experience {
+  background: linear-gradient(144.78deg, rgba(0, 0, 0, 0.93) 0%, rgba(67, 74, 84, 0.12) 100%), url("../img/exp.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 1864px;
+  height: 831.5px;
+  opacity: 0.7px;
+  padding-top: 150px;
+  margin-bottom: 110px;
+}
+.container main .travel_experience .travel_experience_title_info {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 50px;
+}
+.container main .travel_experience .travel_experience_title_info img {
+  width: 150px;
+  height: 150px;
+  border-radius: 150px;
+  margin-top: 100px;
+}
+.container main .travel_experience .travel_experience_title_info h1 {
+  width: 550px;
+  color: white;
+  font-size: 50px;
+}
+.container main .travel_experience .travel_experience_title_info p {
+  width: 593.81px;
+  height: 72px;
+  color: white;
+  font-weight: 400;
+}
+.container main .travel_experience .travel_experience_cards {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+}
+.container main .travel_experience .travel_experience_cards .travel_experience_card {
+  width: 640px;
+  height: 289.5px;
+  background: #1BBC9B;
+  border-radius: 15px;
+}
+.container main .travel_experience .travel_experience_cards .travel_experience_card p {
+  font-size: 25px;
+  font-weight: 400;
+  line-height: 37.5px;
+  color: white;
+  padding: 20px;
+  padding-left: 45px;
+  padding-right: 45px;
+  box-sizing: border-box;
+}
+.container main .travel_experience .travel_experience_cards .travel_experience_card .travel_experience_profile {
+  width: 220px;
+  display: flex;
+  justify-content: space-between;
+  margin-left: 40px;
+}
+.container main .travel_experience .travel_experience_cards .travel_experience_card .travel_experience_profile img {
+  width: 45px;
+  height: 45px;
+  margin-top: 5px;
+}
+.container main .travel_experience .travel_experience_cards .travel_experience_card .travel_experience_profile h2 {
+  font-size: 16px;
+  color: white;
+  line-height: 7px;
+}
+.container main .travel_experience .travel_experience_cards .travel_experience_card .travel_experience_profile .experience_town {
+  font-weight: 400;
+  font-size: 14px;
+}
+.container main .price {
+  margin-bottom: 210px;
+}
+.container main .price .price_title_info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.container main .price .price_title_info h2 {
+  font-family: "Reenie Beanie", cursive;
+  font-size: 30px;
+  font-weight: 500;
+  line-height: 45px;
+  color: #1bbc9b;
+  margin-bottom: 4px;
+}
+.container main .price .price_title_info .price_txt {
+  font-size: 50px;
+  font-weight: 700;
+  line-height: 60px;
+  margin-bottom: 5px;
+}
+.container main .price .price_title_info .headline {
+  font-size: 50px;
+  font-weight: 700;
+  width: 709px;
+  color: black;
+  line-height: 60px;
+}
+.container main .price .price_title_info p {
+  text-align: center;
+  color: #6e6e6e;
+  font-family: Poppins, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  width: 781px;
+}
+.container main .price .price_cards {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+.container main .price .price_cards .price_card {
+  width: 420px;
+  height: 548px;
+  border-radius: 15px;
+  background: #f2f2f2;
+  padding: 40px 20px;
+  box-sizing: border-box;
+  text-align: center;
+}
+.container main .price .price_cards .price_card h2 {
+  font-weight: 700;
+  font-size: 20px;
+  margin-bottom: -58px;
+}
+.container main .price .price_cards .price_card .price_txt {
+  font-weight: 700;
+  font-size: 70px;
+  margin-bottom: 16px;
+}
+.container main .price .price_cards .price_card .price_txt span {
+  font-size: 20px;
+}
+.container main .price .price_cards .price_card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px;
+}
+.container main .price .price_cards .price_card ul li {
+  font-size: 16px;
+  font-weight: 400;
+  color: #6e6e6e;
+  margin-bottom: 8px;
+}
+.container main .price .price_cards .price_card button {
+  width: 140px;
+  height: 44px;
+  border: none;
+  border-radius: 5px;
+  background: #1bbc9b;
+  color: white;
+  font-size: 14px;
+  cursor: pointer;
+}
+.container main .price .price_cards .price_card button:hover {
+  background: #17a085;
+}
+.container main .price .price_cards .inclusive {
+  width: 462px;
+  height: 603px;
+  background: #1bbc9b;
+  padding-top: 40px;
+}
+.container main .price .price_cards .inclusive h2, .container main .price .price_cards .inclusive .price_txt, .container main .price .price_cards .inclusive p, .container main .price .price_cards .inclusive ul li {
+  color: white;
+}
+.container main .price .price_cards .inclusive .price_txt {
+  font-size: 78px;
+}
+.container main .price .price_cards .inclusive .price_txt span {
+  font-size: 22px;
+}
+.container main .price .price_cards .inclusive button {
+  background: #434a54;
+}
+.container main .price .price_cards .inclusive button:hover {
+  background: #33363a;
+}
+.container main .price .price_cards .inclusive .text_under_block {
+  color: #6E6E6E;
+  font-weight: 400;
+  margin-top: 160px;
+  font-size: 16px;
+}
+.container main .price .price_cards .spaced {
+  margin-top: 30px;
+}
+.container main .wandering_souls {
+  display: flex;
+  justify-content: center;
+  gap: 100px;
+  margin-bottom: 150px;
+}
+.container main .wandering_souls .wandering_souls_info h2 {
+  font-family: "Reenie Beanie", cursive;
+  color: #1BBC9B;
+  font-weight: 500;
+  font-size: 30px;
+}
+.container main .wandering_souls .wandering_souls_info .wandering_souls_headline {
+  font-weight: 700;
+  color: #000000;
+  line-height: 60px;
+  font-size: 50px;
+  width: 610px;
+}
+.container main .wandering_souls .wandering_souls_info p {
+  color: #6E6E6E;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  width: 586px;
+}
+.container main .wandering_souls .wandering_souls_info .line {
+  width: 488px;
+  height: 5px;
+  background: #434A54;
+  border-radius: 2px;
+}
+.container main .wandering_souls .wandering_souls_info .line_wider {
+  width: 610px;
+}
+.container main .wandering_souls .wandering_souls_info button {
+  width: 136.86px;
+  height: 44px;
+  background: #1BBC9B;
+  border-radius: 5px;
+  border: none;
+  color: white;
+  margin-top: 40px;
+}
+.container main .roaming_tales .roaming_tales_title_info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 50px;
+}
+.container main .roaming_tales .roaming_tales_title_info h2 {
+  font-family: "Reenie Beanie", cursive;
+  color: #1BBC9B;
+  font-size: 30px;
+  font-weight: 500;
+}
+.container main .roaming_tales .roaming_tales_title_info .roaming_tales_headline {
+  color: #000000;
+  width: 300px;
+  font-size: 50px;
+  font-weight: 700;
+}
+.container main .roaming_tales .roaming_tales_title_info p {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  text-align: center;
+  color: #6E6E6E;
+  width: 776px;
+  font-weight: 400;
+}
+.container main .roaming_tales .article_list {
+  display: flex;
+  justify-content: center;
+  gap: 55px;
+}
+.container main .roaming_tales .article_list .article_contetnt h1 {
+  width: 450px;
+  height: 37.5px;
+}
+.container main .roaming_tales .article_list .article_contetnt p {
+  width: 633.12px;
+  height: 96px;
+  font-weight: 400;
+  color: #6E6E6E;
+  line-height: 24px;
+}
+.container main .roaming_tales .article_list .article_contetnt button {
+  width: 136.13px;
+  height: 44px;
+  background: #1BBC9B;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+.container main .roaming_tales .article_list .article_contetnt .article_date {
+  width: 115.11px;
+  height: 24px;
+  background: #434A54;
+  border-radius: 5px;
+}
+.container main .roaming_tales .article_list .article_contetnt .article_date p {
+  margin-left: 15px;
+  font-weight: 700;
+  color: white;
+  font-size: 14px;
+}
+.container main .roaming_tales .article_list .article_preview {
+  display: flex;
+  flex-direction: column;
+  gap: 51px;
+}
+.container main .roaming_tales .article_list .article_preview .article_block {
+  display: flex;
+  align-items: center;
+  gap: 35px;
+}
+.container main .roaming_tales .article_list .article_preview .article_block img {
+  width: 207.25px;
+  height: 138.22px;
+}
+.container main .roaming_tales .article_list .article_preview .article_block .article_item {
+  display: flex;
+  flex-direction: column;
+}
+.container main .roaming_tales .article_list .article_preview .article_block .article_item .article_date {
+  width: 115.11px;
+  height: 24px;
+  background: #2ecc71;
+  border-radius: 5px;
+  color: white;
+}
+.container main .roaming_tales .article_list .article_preview .article_block .article_item .article_date p {
+  margin-left: 15px;
+  font-weight: 700;
+  color: white;
+  font-size: 14px;
+}
+.container main .roaming_tales .article_list .article_preview .article_block .article_item h2 {
+  font-size: 20px;
+  font-weight: 700;
+}
+.container main .roaming_tales .article_list .article_preview .article_block .article_item p {
+  margin: 0;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #555;
+  width: 376px;
+}
+.container footer {
+  width: 100%;
+  height: 474px;
+  background-image: linear-gradient(rgba(15, 44, 86, 0.706), rgba(49, 49, 49, 0.7)), url("../img/overlay.png");
+  background-size: cover;
+  background-position: center;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  box-sizing: border-box;
+}
+.container footer h1 {
+  width: 580px;
+  font-size: 50px;
+}
+.container footer .footer_address, .container footer .footer_contact {
+  margin-top: 20px;
+}
+.container footer .footer_address {
+  margin-left: -150px;
+}
+.container footer .footer_address .footer_icons {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100px;
+}
+.container footer .footer_address ul {
+  margin-left: -39px;
+}
+.container footer .footer_address ul li h2 {
+  font-size: 20px;
+}
+.container footer .footer_address ul li p {
+  font-weight: 400;
+  font-size: 16px;
+}
+.container footer .footer_contact button {
+  background: #1BBC9B;
+  width: 181.52px;
+  height: 44px;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 14px;
+}
+.container footer .footer_contact p {
+  font-weight: 700;
+  font-size: 25px;
+}
+
+@media screen and (min-width: 390px) and (max-width: 844px) {
+  .container {
+    width: 389px;
+  }
+  .container .bg {
+    width: 389px;
+  }
+  .container .bg nav {
+    width: 389px;
+  }
+  .container .bg nav img {
+    position: relative;
+    left: -20px;
+  }
+  .container .bg nav ul li {
+    display: none;
+  }
+  .container .bg nav button {
+    position: relative;
+    left: -13px;
+    display: none;
+  }
+  .container .bg nav .off-screen-menu.active {
+    width: 200px;
+    left: 150px;
+    top: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .container .bg nav .off-screen-menu.active .burger_gallery {
+    margin-left: 70px;
+  }
+  .container .bg nav .off-screen-menu.active .contacts h1 {
+    margin-left: 10px;
+    text-align: center;
+  }
+  .container .bg nav .off-screen-menu.active .contacts p {
+    text-align: center;
+    width: 180px;
+  }
+  .container .bg nav .off-screen-menu.active .contacts .icons .images .img_bg {
+    position: relative;
+    left: 5px;
+  }
+  .container .bg nav .off-screen-menu.active .contacts .icons .images .img_bg img {
+    margin-left: 40px;
+  }
+  .container .bg nav .off-screen-menu.active ul {
+    display: flex;
+    flex-direction: column;
+    line-height: 24px;
+  }
+  .container .bg nav .off-screen-menu.active ul h1 {
+    margin-bottom: -30px;
+  }
+  .container .bg nav .off-screen-menu.active ul ul li::after {
+    content: "";
+    display: none;
+  }
+  .container .bg nav .off-screen-menu.active ul li {
+    display: block;
+  }
+  .container .bg header {
+    margin-top: -180px;
+    margin-bottom: 10px;
+  }
+  .container .bg header .header_info {
+    width: 389px !important;
+    margin-left: -65px;
+    display: flex;
+    align-items: center;
+  }
+  .container .bg header .header_info .square_header {
+    width: 50px;
+    height: 50px;
+    position: relative;
+    top: 80px;
+    left: -100px;
+  }
+  .container .bg header .header_info h1 {
+    font-size: 50px;
+    width: 340px;
+    line-height: 50px;
+  }
+  .container .bg header .header_nav {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    width: 275px !important;
+    height: 300px !important;
+  }
+  .container .bg header .header_nav button {
+    margin-top: 10px;
+    padding: 10px;
+  }
+  .container main {
+    width: 389px;
+  }
+  .container main .dream_vacation {
+    display: flex;
+    flex-direction: column;
+    width: 389px;
+    text-align: center;
+    margin-bottom: -630px;
+  }
+  .container main .dream_vacation .dream_vacation_info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 389px;
+  }
+  .container main .dream_vacation .dream_vacation_info .plan_the_trip {
+    width: 340px;
+    line-height: 50px;
+  }
+  .container main .dream_vacation .dream_vacation_info p {
+    width: 340px;
+  }
+  .container main .dream_vacation img {
+    position: relative;
+    top: -500px;
+    z-index: -1;
+    width: 389px;
+  }
+  .container main .tour_blocks {
+    width: 389px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  .container main .tour_blocks img {
+    width: 340px;
+  }
+  .container main .icons_tour_blocks {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    width: 100px;
+    height: 360px;
+    position: relative;
+    top: -280px;
+    left: 30px;
+    margin-bottom: -250px;
+  }
+  .container main .icons_tour_blocks .block {
+    width: 340px;
+  }
+  .container main .icons_tour_blocks .location {
+    position: relative;
+    left: -55px;
+    top: -20px;
+  }
+  .container main .icons_tour_blocks .mountain {
+    position: relative;
+    left: -30px;
+  }
+  .container main .icons_tour_blocks .gate {
+    position: relative;
+    left: -10px;
+    top: 20px;
+  }
+  .container main .travel_cards {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .container main .travel_cards .card_item {
+    width: 350px;
+  }
+  .container main .travel_cards .card_item .card_time_destination {
+    width: 300px !important;
+  }
+  .container main .trip_search {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 300px;
+  }
+  .container main .trip_search .trip_search_title_subtitle {
+    margin-bottom: 100px;
+  }
+  .container main .trip_search .trip_search_title_subtitle h2 {
+    margin-bottom: -10px;
+  }
+  .container main .trip_search .trip_search_title_subtitle .vacation_starting {
+    width: 340px;
+    line-height: 45px;
+    margin-bottom: 5px;
+  }
+  .container main .trip_search .trip_search_title_subtitle p {
+    width: 340px;
+  }
+  .container main .trip_search .trip_search_input {
+    width: 135px !important;
+  }
+  .container main .trip_search .trip_search_input .trip_nav {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 30px;
+    width: 275px !important;
+    height: 340px !important;
+    border: 1px solid black;
+  }
+  .container main .trip_search .trip_search_input .trip_nav button {
+    padding: 10px;
+    width: 300px;
+  }
+  .container main .next_advanture {
+    width: 389px;
+  }
+  .container main .next_advanture .next_advanture_title_info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .container main .next_advanture .next_advanture_title_info h2 {
+    margin-bottom: -30px;
+  }
+  .container main .next_advanture .next_advanture_title_info .travel_destination {
+    text-align: center;
+    width: 340px;
+    margin-bottom: 10px;
+  }
+  .container main .next_advanture .next_advanture_title_info p {
+    text-align: center;
+    width: 340px;
+  }
+  .container main .next_advanture .next_advanture_cards {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+    width: 390px;
+  }
+  .container main .advanture_travel {
+    width: 390px;
+    height: 1300px;
+    display: flex;
+    flex-direction: column;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    box-sizing: border-box;
+  }
+  .container main .advanture_travel .image-container {
+    width: 300px;
+  }
+  .container main .advanture_travel .advanture_travel_title_info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .container main .advanture_travel .advanture_travel_title_info .advanture_travel_headline {
+    text-align: center;
+    width: 340px;
+  }
+  .container main .advanture_travel .advanture_travel_title_info .advanture_travel_txt {
+    text-align: center;
+    width: 340px;
+  }
+  .container main .advanture_travel .advanture_travel_title_info .row {
+    width: 390px;
+  }
+  .container main .advanture_travel .advanture_travel_title_info .row ul {
+    width: 390px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .container main .advanture_travel .advanture_travel_title_info .row ul li p {
+    width: 390px;
+  }
+  .container main .advanture_travel .advanture_travel_title_info .row .line {
+    width: 250px;
+  }
+  .container main .advanture_travel .advanture_travel_title_info .row button {
+    margin-left: 130px;
+  }
+  .container main .travel_itineraries {
+    width: 389px;
+  }
+  .container main .travel_itineraries h1 {
+    width: 340px;
+    font-size: 54px;
+  }
+  .container main .travel_itineraries .iframe {
+    width: 340px !important;
+    height: 400px;
+    border-radius: 15px;
+  }
+  .container main .travel_itineraries .frame2 {
+    display: none;
+  }
+  .container main .travel_experience {
+    width: 389px;
+    height: 1900px !important;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 600px;
+  }
+  .container main .travel_experience .travel_experience_title_info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .container main .travel_experience .travel_experience_title_txt h1 {
+    width: 350px;
+    text-align: center;
+  }
+  .container main .travel_experience .travel_experience_title_txt p {
+    text-align: center;
+    width: 350px;
+    margin-bottom: 100px;
+  }
+  .container main .travel_experience_cards {
+    display: flex;
+    flex-direction: column;
+    gap: 100px;
+  }
+  .container main .travel_experience_cards .travel_experience_card {
+    width: 300px !important;
+    height: 500px !important;
+  }
+  .container main .price .price_title_info .headline {
+    width: 300px;
+  }
+  .container main .price .price_title_info p {
+    width: 300px;
+  }
+  .container main .price .price_cards {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .container main .price .price_cards .price_card {
+    width: 350px;
+  }
+  .container main .wandering_souls {
+    display: flex;
+    flex-direction: column;
+  }
+  .container main .wandering_souls .wandering_souls_info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .container main .wandering_souls .wandering_souls_info .wandering_souls_headline {
+    text-align: center;
+    width: 280px;
+  }
+  .container main .wandering_souls .wandering_souls_info p {
+    text-align: center;
+    width: 300px;
+  }
+  .container main .wandering_souls .wandering_souls_info .line {
+    width: 230px;
+  }
+  .container main .wandering_souls .wandering_souls_info .line_wider {
+    width: 350px;
+  }
+  .container main .roaming_tales {
+    display: flex;
+    flex-direction: column;
+  }
+  .container main .roaming_tales .roaming_tales_title_info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .container main .roaming_tales .roaming_tales_title_info p {
+    width: 300px;
+  }
+  .container main .roaming_tales .article_list {
+    display: flex;
+    flex-direction: column;
+  }
+  .container main .roaming_tales .article_list .article_contetnt {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .container main .roaming_tales .article_list .article_contetnt h1 {
+    width: 300px;
+  }
+  .container main .roaming_tales .article_list .article_contetnt img {
+    width: 340px;
+    margin-bottom: 30px;
+  }
+  .container main .roaming_tales .article_list .article_contetnt p {
+    width: 300px;
+    margin-bottom: 130px;
+  }
+  .container main .roaming_tales .article_list .article_contetnt .article_date {
+    height: 50px;
+  }
+  .container main .roaming_tales .article_list .article_contetnt .article_date p {
+    width: 100px !important;
+  }
+  .container main .roaming_tales .article_list .article_preview .article_block {
+    display: flex;
+    flex-direction: column;
+  }
+  .container main .roaming_tales .article_list .article_preview .article_block .article_item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 340px;
+  }
+  .container main .roaming_tales .article_list .article_preview .article_block .article_item .article_date p {
+    width: 100px !important;
+  }
+  .container main .roaming_tales .article_list .article_preview .article_block .article_item p {
+    width: 300px;
+  }
+  .container footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 390px;
+    height: 1200px !important;
+  }
+  .container footer h1 {
+    width: 300px;
+  }
+  .container footer .footer_address {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 350px;
+    margin-left: 10px;
+  }
+  .container footer .footer_address ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 380px;
+  }
+}/*# sourceMappingURL=style.css.map */
