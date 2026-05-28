@@ -24,10 +24,10 @@ describe('seed', () => {
   });
 
   it('does not duplicate tours when called twice', () => {
-    seed(db); // second call
-    const count = db.prepare('SELECT COUNT(*) as c FROM tours').get().c;
-    const expected = db.prepare('SELECT COUNT(*) as c FROM tours').get().c;
-    expect(count).toBe(expected);
+    const countBefore = db.prepare('SELECT COUNT(*) as c FROM tours').get().c;
+    seed(db); // second call — should be a no-op
+    const countAfter = db.prepare('SELECT COUNT(*) as c FROM tours').get().c;
+    expect(countAfter).toBe(countBefore);
   });
 
   it('parses tour includes as a JSON string', () => {
