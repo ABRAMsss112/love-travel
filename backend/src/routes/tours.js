@@ -26,7 +26,8 @@ router.get('/', (req, res) => {
 
     const tours = db.prepare(sql).all(...params).map(parseTour);
     res.json(tours);
-  } catch {
+  } catch (err) {
+    console.error('Failed to load tours:', err);
     res.status(500).json({ error: 'Failed to load tours' });
   }
 });
@@ -37,7 +38,8 @@ router.get('/:id', (req, res) => {
     const tour = db.prepare('SELECT * FROM tours WHERE id = ?').get(Number(req.params.id));
     if (!tour) return res.status(404).json({ error: 'Tour not found' });
     res.json(parseTour(tour));
-  } catch {
+  } catch (err) {
+    console.error('Failed to load tour:', err);
     res.status(500).json({ error: 'Failed to load tour' });
   }
 });

@@ -58,7 +58,8 @@ router.get('/', (req, res) => {
     }
 
     res.json({ results: tours, total: tours.length });
-  } catch {
+  } catch (err) {
+    console.error('Search failed:', err);
     res.status(500).json({ error: 'Search failed' });
   }
 });
