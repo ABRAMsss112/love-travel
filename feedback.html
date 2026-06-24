@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Залишити відгук | Tour Greece</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="scss/style.css" />
+    <style>
+        .feedback_section {
+            background: #f9f9f9;
+            padding: 80px 20px;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .feedback_container {
+            background: #ffffff;
+            max-width: 600px;
+            width: 100%;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+        }
+        .feedback_container h2 {
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        .feedback_container p {
+            text-align: center;
+            color: #888;
+            margin-bottom: 30px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #555;
+        }
+        .form-group input, .form-group textarea, .form-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+        .submit-btn {
+            background: #1BBC9B;
+            color: white;
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .submit-btn:hover {
+            background: #17a589;
+        }
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            color: #1BBC9B;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <section class="feedback_section">
+        <div class="feedback_container">
+            <h2>Поділіться враженнями</h2>
+            <p>Ваш відгук допоможе нам стати ще кращими!</p>
+
+            <form id="feedbackForm">
+                <div class="form-group">
+                    <label for="reviewerName">Ваше ім'я</label>
+                    <input type="text" id="reviewerName" placeholder="Наприклад: Олег" required />
+                </div>
+                <div class="form-group">
+                    <label for="reviewerCity">Ваше місто</label>
+                    <input type="text" id="reviewerCity" placeholder="Наприклад: Івано-Франківськ" required />
+                </div>
+                <div class="form-group">
+                    <label for="reviewRating">Оцінка</label>
+                    <select id="reviewRating" required>
+                        <option value="5">5 - Відмінно ★★★★★</option>
+                        <option value="4">4 - Добре ★★★★☆</option>
+                        <option value="3">3 - Нормально ★★★☆☆</option>
+                        <option value="2">2 - Погано ★★☆☆☆</option>
+                        <option value="1">1 - Жахливо ★☆☆☆☆</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="reviewText">Текст відгуку</label>
+                    <textarea id="reviewText" placeholder="Напишіть свої враження від подорожі..." required></textarea>
+                </div>
+                
+                <button type="submit" class="submit-btn">Надіслати відгук</button>
+            </form>
+            
+            <a href="index.html" class="back-link">← Повернутися на головну</a>
+        </div>
+    </section>
+
+   <script>
+        document.getElementById('feedbackForm').addEventListener('submit', async function(e) {
+            e.preventDefault(); // Зупиняємо стандартне перезавантаження сторінки
+
+            // Збираємо введені дані
+            const name = document.getElementById('reviewerName').value.trim();
+            const city = document.getElementById('reviewerCity').value.trim();
+            const rating = document.getElementById('reviewRating').value;
+            const text = document.getElementById('reviewText').value.trim();
+
+            try {
+                // Відправляємо POST запит на наш бекенд
+                const response = await fetch('/api/reviews', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ name, city, rating, text })
+                });
+
+                if (response.ok) {
+                    alert('Дякуємо! Ваш відгук успішно додано.');
+                    // Перекидаємо користувача назад на головну сторінку
+                    window.location.href = 'index.html';
+                } else {
+                    alert('Сталася помилка при відправці. Спробуйте ще раз.');
+                }
+            } catch (error) {
+                console.error('Помилка:', error);
+                alert('Не вдалося з\'єднатися з сервером.');
+            }
+        });
+    </script>
+</body>
+</html>

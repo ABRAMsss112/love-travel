@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Про наше туристичне агентство.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:wght@400;700&family=Reenie+Beanie&family=Unbounded&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="scss/style.css">
+    <title>Про нас</title>
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <style>
+        /* Ізольовані стилі спеціально для сторінки Про нас, щоб нічого не зламати */
+        .about-hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('img/york.png') center/cover;
+            height: 350px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        .about-hero h1 {
+            color: white;
+            font-size: 42px;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .about-section {
+            max-width: 1200px;
+            margin: 80px auto;
+            padding: 0 20px;
+        }
+
+        /* Intro Section */
+        .about-intro {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        .about-intro-text .subtitle {
+            font-family: 'Reenie Beanie', cursive;
+            color: #1BBC9B;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        .about-intro-text h2 {
+            font-size: 36px;
+            font-family: 'Poppins', sans-serif;
+            color: #333;
+            line-height: 1.3;
+            margin-bottom: 20px;
+        }
+        .about-intro-text h2 span {
+            background-color: #1BBC9B;
+            color: white;
+            padding: 0 10px;
+        }
+        .about-intro-text p {
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+        .about-btn {
+            background-color: #1BBC9B;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .about-btn:hover { background-color: #17a589; }
+        
+        .about-intro-images {
+            position: relative;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        .about-intro-images img {
+            width: 100%;
+            border-radius: 10px;
+            object-fit: cover;
+        }
+        .about-intro-images img:first-child { grid-row: span 2; height: 100%; }
+
+        /* Features Section */
+        .about-features {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-top: 50px;
+        }
+        .feature-item {
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+        }
+        .feature-item img { width: 50px; }
+        .feature-item h3 { font-size: 18px; margin-bottom: 10px; color: #333; }
+        .feature-item p { color: #666; font-size: 14px; line-height: 1.6; }
+
+        /* Banner */
+        .about-banner {
+            background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('img/header.png') center/cover fixed;
+            padding: 60px 20px;
+            text-align: center;
+            color: white;
+            margin: 80px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+            border-radius: 10px;
+        }
+        .about-banner h2 { font-size: 32px; font-family: 'Poppins', sans-serif; }
+
+        /* Testimonials */
+        .about-testimonials {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        .testimonials-grid img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+        .testimonial-text {
+            background: #f9f9f9;
+            padding: 40px;
+            border-radius: 10px;
+        }
+        .testimonial-text h2 { font-size: 28px; margin-bottom: 20px; }
+        .testimonial-text p { font-size: 16px; font-style: italic; color: #555; margin-bottom: 20px; }
+        .client-info { display: flex; align-items: center; gap: 15px; }
+        .client-info img { width: 50px; height: 50px; border-radius: 50%; }
+        .client-info h4 { margin: 0; color: #333; }
+        .client-info span { font-size: 12px; color: #1BBC9B; }
+
+        /* Pricing Block */
+        .about-pricing-bg {
+            background: url('img/swiper.png') center/cover;
+            padding: 80px 20px;
+            color: white;
+            margin-top: 80px;
+        }
+        .pricing-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 350px 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        .pricing-card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            color: #333;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .pricing-card img { width: 100%; border-radius: 8px; margin-bottom: 20px; }
+        .pricing-list { margin-left: 50px; }
+        .pricing-list h2 { font-size: 36px; margin-bottom: 30px; font-family: 'Poppins', sans-serif; }
+        .price-item {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid rgba(255,255,255,0.3);
+            padding: 15px 0;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .price-item:last-child { border: none; }
+
+        @media (max-width: 900px) {
+            .about-intro, .about-features, .about-testimonials, .pricing-container { grid-template-columns: 1fr; }
+            .about-banner { flex-direction: column; gap: 20px; }
+            .pricing-list { margin-left: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- ОНОВЛЕНА НАВІГАЦІЯ З УСІМА ПОСИЛАННЯМИ -->
+       <nav>
+    <a href="index.html">
+        <img src="img/logo.png" alt="Tour Greece логотип">
+    </a>
+    <ul>
+        <li class="dropdown"><a href="index.html">Головна</a></li>
+        <li class="dropdown"><a href="archive.html">Тури</a></li>
+        <li class="dropdown"><a href="services.html">Послуги</a></li>
+        <li class="dropdown"><a href="about.html">Про нас</a></li>
+        <li class="dropdown"><a href="blog.html">Блог</a></li>
+        <li><a href="contact.html">Контакти</a></li>
+    </ul>
+    <section class="off-screen-menu">
+        <ul>
+            <li><a href="index.html">Головна</a></li>
+            <li><a href="archive.html">Тури</a></li>
+            <li><a href="services.html">Послуги</a></li>
+            <li><a href="about.html">Про нас</a></li>
+            <li><a href="blog.html">Блог</a></li>
+            <li><a href="contact.html">Контакти</a></li>
+        </ul>
+    </section>
+    <div class="burger">
+        <div class="ham-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+    <button id="modalBtn">Пошук</button>
+</nav>
+
+        <!-- HEADER СТОРІНКИ ПРО НАС -->
+        <header class="about-hero">
+            <h1>About Us</h1>
+        </header>
+
+        <main>
+            <!-- Блок 1: Intro -->
+            <section class="about-section about-intro">
+                <div class="about-intro-text">
+                    <div class="subtitle">Dream, Explore, Discover</div>
+                    <h2>The perfect <span>vacation</span> come true with our Travel Agency</h2>
+                    <p>Ми — команда професіоналів, яка обожнює подорожі так само сильно, як і ви. Наша місія — зробити ваш відпочинок безтурботним, яскравим та незабутнім. Від екзотичних пляжів до галасливих мегаполісів — ми знайдемо ідеальний маршрут саме для вас.</p>
+                    <button class="about-btn">Читати далі</button>
+                </div>
+                <div class="about-intro-images">
+                    <img src="img/bamboo.png" alt="Bamboo forest">
+                    <img src="img/Section → Link → i-parallax-04-package-02.jpeg.png" alt="Beach">
+                    <img src="img/Section → Link → i-parallax-05-package-03.jpeg.png" alt="City">
+                </div>
+            </section>
+
+            <img src="img/Section (1).png" alt="Divider" style="width:100%; object-fit:cover; height: 200px;">
+
+            <!-- Блок 2: Features (Переваги) -->
+            <section class="about-section">
+                <div class="about-intro-text" style="max-width: 500px;">
+                    <div class="subtitle">Explore the world with us</div>
+                    <h2>Perfect <span>Vacation</span> come True</h2>
+                </div>
+                
+                <div class="about-features">
+                    <div class="feature-item">
+                        <img src="img/trip_symbol.png" alt="icon">
+                        <div>
+                            <h3>Action/Sports</h3>
+                            <p>Для тих, хто любить активний відпочинок та екстрим. Гори, серфінг, хайкінг.</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <img src="img/trip_location.png" alt="icon">
+                        <div>
+                            <h3>Travel Itineraries</h3>
+                            <p>Продумані до дрібниць маршрути, щоб ви не пропустили жодної цікавинки.</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <img src="img/trip_search.png" alt="icon">
+                        <div>
+                            <h3>Local Guide</h3>
+                            <p>Досвідчені місцеві гіди, які покажуть вам приховані перлини міст.</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <img src="img/contact_location.png" alt="icon">
+                        <div>
+                            <h3>Accommodation</h3>
+                            <p>Тільки перевірені готелі та апартаменти для вашого максимального комфорту.</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <img src="img/contact_mail.png" alt="icon">
+                        <div>
+                            <h3>Travel Insurance</h3>
+                            <p>Надійне страхування для вашого спокою у будь-якій точці світу.</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <img src="img/contact_phone.png" alt="icon">
+                        <div>
+                            <h3>24/7 Support</h3>
+                            <p>Наша служба підтримки завжди на зв'язку, щоб допомогти вам у дорозі.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Блок 3: Banner -->
+            <div class="about-banner">
+                <div>
+                    <div style="font-family:'Reenie Beanie'; color:#1BBC9B; font-size:24px;">Pack your bags</div>
+                    <h2>Book your dream vacation today !</h2>
+                </div>
+                <button class="about-btn">Contact Us</button>
+            </div>
+
+            <!-- Блок 4: Відгуки -->
+            <section class="about-section about-testimonials">
+                <div class="testimonials-grid">
+                    <img src="img/york.png" alt="Trip">
+                    <img src="img/tokyo.png" alt="Trip">
+                    <img src="img/nara.png" alt="Trip">
+                    <img src="img/monica.png" alt="Trip">
+                </div>
+                <div class="testimonial-text">
+                    <div class="subtitle" style="font-family:'Reenie Beanie'; color:#1BBC9B; font-size:24px;">Happy Travelers</div>
+                    <h2>Stories from Satisfied Customers</h2>
+                    <p>"It was the most amazing trip thanks to this travel agency. They took care of everything from flights to accommodations, and even helped me plan out my itinerary. I highly recommend them."</p>
+                    <div class="client-info">
+                        <img src="img/avatar.png" alt="Client">
+                        <div>
+                            <h4>Emily Hunt</h4>
+                            <span>Traveler</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Блок 5: Прайс лист на фоні -->
+            <section class="about-pricing-bg">
+                <div class="pricing-container">
+                    <div class="pricing-card">
+                        <img src="img/bamboo.png" alt="Chiang Mai">
+                        <h3>Chiang Mai</h3>
+                        <p style="color:#666; font-size:14px; margin: 10px 0;">Visit the temples and the famous Night Bazaar.</p>
+                        <div style="display:flex; justify-content:space-between; align-items:center; border-top:1px solid #eee; padding-top:15px; margin-top:15px;">
+                            <span style="font-weight:bold; font-size:20px;">$490</span>
+                            <button class="about-btn" style="padding: 8px 15px;">Details</button>
+                        </div>
+                    </div>
+                    <div class="pricing-list">
+                        <div style="font-family:'Reenie Beanie'; color:#1BBC9B; font-size:24px;">Choose your plan</div>
+                        <h2>Start your Vacation</h2>
+                        <div class="price-item">
+                            <span>Aegean Islands</span>
+                            <span>$ 75.-</span>
+                        </div>
+                        <div class="price-item">
+                            <span>Bicycle Rental</span>
+                            <span>$ 46.-</span>
+                        </div>
+                        <div class="price-item">
+                            <span>Walking Tours</span>
+                            <span>$ 75.-</span>
+                        </div>
+                        <div class="price-item">
+                            <span>Bosphorus Tour</span>
+                            <span>$ 82.-</span>
+                        </div>
+                        <div style="margin-top: 40px; display:flex; justify-content:space-between; align-items:center;">
+                            <h3>Write us to start the Holiday</h3>
+                            <button class="about-btn">Contact</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- ПІДВАЛ -->
+        <footer>
+            <h2>Подорожуйте за межі уяви разом із нашою тревел-агенцією!</h2>
+            <section class="footer_address">
+                <ul>
+                    <li><h2>Адреса</h2></li>
+                    <li><p>Україна</p></li>
+                    <li><p>Івано-Франківськ</p></li>
+                    <li><p>Вовчинецька, 225</p></li>
+                </ul>
+                <div class="footer_icons">
+                    <img src="img/facebook_footer.png" alt="Facebook">
+                    <img src="img/twitter_footer.png" alt="Twitter">
+                    <img src="img/youtube_footer.png" alt="YouTube">
+                </div>
+            </section>
+            <section class="footer_contact">
+                <h2>Контакти</h2>
+                <a href="mailto:info@travel.com" class="footer_email_btn">info@travel.com</a>
+                <p><a href="tel:+380999999999">+38 099 999 99 99</a></p>
+            </section>
+        </footer>
+    </div>
+
+    <!-- Модалка пошуку -->
+    <div id="searchModal" class="modal">
+        <div class="modal-content">
+            <button class="close-btn" id="closeModal">&times;</button>
+            <h2>Пошук туру</h2>
+            <form id="tourSearchForm">
+                <label>Введіть напрямок</label>
+                <input type="text" placeholder="Наприклад: Таїланд">
+                <button type="submit" class="about-btn" style="width: 100%; margin-top: 15px;">Шукати</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/script.js" defer></script>
+</body>
+</html>

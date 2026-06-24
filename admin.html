@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Адмін-панель | Tour Greece</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: #f4f7f6;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        .header {
+            background-color: #1a1a2e;
+            color: white;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .header h1 {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            font-size: 24px;
+        }
+        .header a {
+            color: #1BBC9B;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        .card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            overflow: hidden;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+        thead {
+            background-color: #1BBC9B;
+            color: white;
+        }
+        th, td {
+            padding: 15px 20px;
+            border-bottom: 1px solid #eee;
+        }
+        th {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        td {
+            font-size: 14px;
+        }
+        tr:last-child td {
+            border-bottom: none;
+        }
+        tr:hover {
+            background-color: #f9fbfb;
+        }
+        .status-badge {
+            background-color: #e8f8f5;
+            color: #1BBC9B;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        .no-data {
+            text-align: center;
+            padding: 40px;
+            color: #888;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>Tour Greece | Адмін-панель</h1>
+        <a href="index.html">← Повернутися на сайт</a>
+    </div>
+
+    <div class="container">
+        <h2 style="font-family: 'Poppins', sans-serif; margin-bottom: 20px;">Останні бронювання</h2>
+        <div class="card">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Оформлено</th>
+                        <th>Клієнт</th>
+                        <th>Контакти</th>
+                        <th>Тур</th>
+                        <th>Дата туру</th>
+                        <th>Сума</th>
+                        <th>Статус</th>
+                    </tr>
+                </thead>
+                <tbody id="bookingsTableBody">
+                    <tr>
+                        <td colspan="8" class="no-data">Завантаження даних...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            const tableBody = document.getElementById('bookingsTableBody');
+
+            try {
+                // Стукаємо на наш бекенд за даними
+                const response = await fetch('/api/bookings');
+                if (!response.ok) throw new Error('Помилка завантаження');
+                
+                const bookings = await response.json();
+
+                if (bookings.length === 0) {
+                    tableBody.innerHTML = '<tr><td colspan="8" class="no-data">Поки що немає жодного бронювання.</td></tr>';
+                    return;
+                }
+
+                // Малюємо таблицю
+                tableBody.innerHTML = bookings.map(booking => {
+                    // Форматуємо дату створення (робимо її красивою)
+                    const dateObj = new Date(booking.created_at);
+                    const formattedDate = dateObj.toLocaleDateString('uk-UA') + ' ' + dateObj.toLocaleTimeString('uk-UA', {hour: '2-digit', minute:'2-digit'});
+
+                    return `
+                        <tr>
+                            <td><strong>#${booking.id}</strong></td>
+                            <td style="color: #888; font-size: 13px;">${formattedDate}</td>
+                            <td><strong>${booking.client_name}</strong></td>
+                            <td>
+                                📞 ${booking.client_phone}<br>
+                                ${booking.client_email ? `✉️ ${booking.client_email}` : ''}
+                            </td>
+                            <td><strong>${booking.tour}</strong></td>
+                            <td>${booking.date}</td>
+                            <td><strong>${booking.price}</strong></td>
+                            <td><span class="status-badge">Нове</span></td>
+                        </tr>
+                    `;
+                }).join('');
+
+            } catch (error) {
+                console.error(error);
+                tableBody.innerHTML = '<tr><td colspan="8" class="no-data" style="color: red;">Помилка з\'єднання з сервером. Переконайтеся, що бекенд запущено.</td></tr>';
+            }
+        });
+    </script>
+</body>
+</html>

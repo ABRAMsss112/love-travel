@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Магазин туристичних послуг та страхових полісів.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:wght@400;700&family=Reenie+Beanie&family=Unbounded&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="scss/style.css">
+    <title>Магазин</title>
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <style>
+        /* Ізольовані стилі модуля Магазину */
+        .shop-hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('img/header.png') center/cover;
+            height: 350px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        .shop-hero h1 {
+            color: white;
+            font-size: 42px;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .shop-container {
+            max-width: 1200px;
+            margin: 40px auto 80px;
+            padding: 0 20px;
+        }
+
+        /* Sorting Header */
+        .shop-sorting {
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 30px;
+        }
+        .shop-sorting select {
+            padding: 10px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+            color: #555;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 14px;
+            cursor: pointer;
+            outline: none;
+        }
+
+        /* Products Grid */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+
+        /* Product Card */
+        .product-card {
+            text-align: center;
+            position: relative;
+        }
+        
+        .product-image-wrapper {
+            position: relative;
+            margin-bottom: 20px;
+            border-radius: 12px;
+            overflow: hidden;
+            aspect-ratio: 1 / 1;
+        }
+        
+        .product-image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .product-card:hover .product-image-wrapper img {
+            transform: scale(1.05);
+        }
+
+        /* Sale Badge */
+        .badge-sale {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: rgba(0, 0, 0, 0.6);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            z-index: 2;
+        }
+
+        .product-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 16px;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        .product-price {
+            font-size: 14px;
+            color: #888;
+            margin-bottom: 15px;
+        }
+        
+        .price-old {
+            text-decoration: line-through;
+            opacity: 0.6;
+            margin-right: 5px;
+        }
+
+        .btn-cart {
+            background-color: #1BBC9B;
+            color: white;
+            border: none;
+            padding: 8px 24px;
+            border-radius: 25px;
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .btn-cart:hover {
+            background-color: #17a589;
+        }
+
+        /* Адаптивність для планшетів та смартфонів */
+        @media (max-width: 900px) {
+            .products-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+            .shop-sorting {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- ТВОЯ РІДНА НАВІГАЦІЯ -->
+<nav>
+    <a href="index.html">
+        <img src="img/logo.png" alt="Tour Greece логотип">
+    </a>
+    <ul>
+        <li class="dropdown"><a href="index.html">Головна</a></li>
+        <li class="dropdown"><a href="archive.html">Тури</a></li>
+        <li class="dropdown"><a href="services.html">Послуги</a></li>
+        <li class="dropdown"><a href="about.html">Про нас</a></li>
+        <li class="dropdown"><a href="blog.html">Блог</a></li>
+        <li><a href="contact.html">Контакти</a></li>
+    </ul>
+    <section class="off-screen-menu">
+        <ul>
+            <li><a href="index.html">Головна</a></li>
+            <li><a href="archive.html">Тури</a></li>
+            <li><a href="services.html">Послуги</a></li>
+            <li><a href="about.html">Про нас</a></li>
+            <li><a href="blog.html">Блог</a></li>
+            <li><a href="contact.html">Контакти</a></li>
+        </ul>
+    </section>
+    <div class="burger">
+        <div class="ham-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+    <button id="modalBtn">Пошук</button>
+</nav>
+
+        <!-- HERO СТОРІНКИ МАГАЗИНУ -->
+        <header class="shop-hero">
+            <h1>Shop</h1>
+        </header>
+
+        <main class="shop-container">
+            <!-- Блок сортування -->
+            <div class="shop-sorting">
+                <select>
+                    <option value="default">Default sorting</option>
+                    <option value="popularity">Sort by popularity</option>
+                    <option value="rating">Sort by average rating</option>
+                    <option value="newness">Sort by latest</option>
+                    <option value="price-low">Sort by price: low to high</option>
+                    <option value="price-high">Sort by price: high to low</option>
+                </select>
+            </div>
+
+            <!-- Сітка товарів -->
+            <div class="products-grid">
+                
+                <!-- Товар 1 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <img src="img/bamboo.png" alt="Baggage Insurance" loading="lazy">
+                    </div>
+                    <h3 class="product-title">Baggage Insurance</h3>
+                    <div class="product-price">$50.00</div>
+                    <button class="btn-cart">Add to cart</button>
+                </div>
+
+                <!-- Товар 2 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <img src="img/tokyo.png" alt="Health Insurance" loading="lazy">
+                    </div>
+                    <h3 class="product-title">Health Insurance</h3>
+                    <div class="product-price">$220.00</div>
+                    <button class="btn-cart">Add to cart</button>
+                </div>
+
+                <!-- Товар 3 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <span class="badge-sale">SALE!</span>
+                        <img src="img/Section → Link → i-parallax-04-package-02.jpeg.png" alt="Medical Insurance" loading="lazy">
+                    </div>
+                    <h3 class="product-title">Medical Insurance</h3>
+                    <div class="product-price">
+                        <span class="price-old">$70.00</span> $45.00
+                    </div>
+                    <button class="btn-cart">Add to cart</button>
+                </div>
+
+                <!-- Товар 4 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <span class="badge-sale">SALE!</span>
+                        <img src="img/azure.png" alt="Tour Operator Liability" loading="lazy">
+                    </div>
+                    <h3 class="product-title">Tour Operator Liability</h3>
+                    <div class="product-price">
+                        <span class="price-old">$70.00</span> $45.00
+                    </div>
+                    <button class="btn-cart">Add to cart</button>
+                </div>
+
+                <!-- Товар 5 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <img src="img/Section → Link → i-parallax-05-package-03.jpeg.png" alt="Trip Cancellation Insurance" loading="lazy">
+                    </div>
+                    <h3 class="product-title">Trip Cancellation Insurance</h3>
+                    <div class="product-price">$39.00</div>
+                    <button class="btn-cart">Add to cart</button>
+                </div>
+
+                <!-- Товар 6 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <img src="img/nara.png" alt="Visitor Insurance" loading="lazy">
+                    </div>
+                    <h3 class="product-title">Visitor Insurance</h3>
+                    <div class="product-price">$60.00 - $80.00</div>
+                    <button class="btn-cart">Select options</button>
+                </div>
+
+            </div>
+        </main>
+
+        <!-- ТВІЙ РІДНИЙ ПІДВАЛ -->
+        <footer>
+            <h2>Подорожуйте за межі уяви разом із нашою тревел-агенцією!</h2>
+            <section class="footer_address">
+                <ul>
+                    <li><h2>Адреса</h2></li>
+                    <li><p>Україна</p></li>
+                    <li><p>Івано-Франківськ</p></li>
+                    <li><p>Вовчинецька, 225</p></li>
+                </ul>
+                <div class="footer_icons">
+                    <img src="img/facebook_footer.png" alt="Facebook">
+                    <img src="img/twitter_footer.png" alt="Twitter">
+                    <img src="img/youtube_footer.png" alt="YouTube">
+                </div>
+            </section>
+            <section class="footer_contact">
+                <h2>Контакти</h2>
+                <a href="mailto:info@travel.com" class="footer_email_btn">info@travel.com</a>
+                <p><a href="tel:+380999999999">+38 099 999 99 99</a></p>
+            </section>
+        </footer>
+    </div>
+
+    <!-- Модалка пошуку туру -->
+    <div id="searchModal" class="modal">
+        <div class="modal-content">
+            <button class="close-btn" id="closeModal">&times;</button>
+            <h2>Пошук туру</h2>
+            <form id="tourSearchForm">
+                <label>Введіть напрямок</label>
+                <input type="text" placeholder="Наприклад: Таїланд">
+                <label>Тип подорожі</label>
+                <select>
+                    <option selected>Будь-який</option>
+                    <option>Пляжний відпочинок</option>
+                    <option>Екскурсійний тур</option>
+                    <option>Пригодницький тур</option>
+                    <option>Гірськолижний відпочинок</option>
+                </select>
+                <label>Кількість днів</label>
+                <input type="number" placeholder="Наприклад: 7">
+                <button type="submit" class="search-btn">Шукати</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/script.js" defer></script>
+</body>
+</html>

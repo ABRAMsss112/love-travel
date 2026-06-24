@@ -10,6 +10,7 @@ const toursRouter = require('./routes/tours');
 const reviewsRouter = require('./routes/reviews');
 const contactRouter = require('./routes/contact');
 const searchRouter = require('./routes/search');
+const bookingsRouter = require('./routes/bookings');
 
 // ── Database init ─────────────────────────────────────────
 migrate(db);
@@ -30,6 +31,7 @@ app.use('/api/tours', toursRouter);
 app.use('/api/reviews', reviewsRouter);
 app.use('/api/contact', contactRouter);
 app.use('/api/search', searchRouter);
+app.use('/api/bookings', bookingsRouter);
 
 // ── Health check ──────────────────────────────────────────
 app.get('/api/health', (_req, res) => {

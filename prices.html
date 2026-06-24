@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Тарифи, гарячі пропозиції та туристичні пакети нашої агенції.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:wght@400;700&family=Reenie+Beanie&family=Unbounded&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="scss/style.css">
+    <title>Тарифи</title>
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <style>
+        /* ===== ІЗОЛЬОВАНІ СТИЛІ СТОРІНКИ ТАРИФІВ ===== */
+        .prc-hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('img/Section → Link → i-parallax-05-package-03.jpeg.png') center/cover;
+            height: 350px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        .prc-hero h1 {
+            color: white;
+            font-size: 42px;
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+        }
+
+        .prc-section {
+            max-width: 1200px;
+            margin: 80px auto;
+            padding: 0 20px;
+        }
+
+        /* Section Headers */
+        .prc-header-center {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .prc-subtitle {
+            font-family: 'Reenie Beanie', cursive;
+            color: #1BBC9B;
+            font-size: 26px;
+            margin-bottom: 5px;
+        }
+        .prc-title {
+            font-size: 36px;
+            font-family: 'Poppins', sans-serif;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        /* Pricing Cards Grid */
+        .prc-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        .prc-card {
+            background: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s;
+        }
+        .prc-card:hover { transform: translateY(-10px); }
+        
+        .prc-card-img {
+            height: 200px;
+            width: 100%;
+            object-fit: cover;
+        }
+        
+        .prc-card-body {
+            padding: 30px 20px;
+            background-color: #f9f9f9;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .prc-card.highlight .prc-card-body {
+            background-color: #555;
+            color: white;
+        }
+        .prc-card.highlight .prc-card-title,
+        .prc-card.highlight .prc-card-price,
+        .prc-card.highlight .prc-card-desc,
+        .prc-card.highlight .prc-features li {
+            color: white;
+        }
+
+        .prc-card-title {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #555;
+        }
+        .prc-card-price {
+            font-family: 'Poppins', sans-serif;
+            font-size: 32px;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 15px;
+        }
+        .prc-card-price span {
+            font-size: 14px;
+            font-weight: 400;
+            color: #888;
+        }
+        .prc-card-desc {
+            font-size: 13px;
+            color: #777;
+            line-height: 1.6;
+            margin-bottom: 25px;
+            padding: 0 10px;
+        }
+
+        .prc-features {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 30px 0;
+            border-top: 1px solid rgba(0,0,0,0.05);
+            text-align: left;
+            flex-grow: 1;
+        }
+        .prc-card.highlight .prc-features { border-top-color: rgba(255,255,255,0.1); }
+        
+        .prc-features li {
+            padding: 12px 0;
+            font-size: 14px;
+            color: #555;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+        .prc-card.highlight .prc-features li { border-bottom-color: rgba(255,255,255,0.1); }
+        .prc-features li::before {
+            content: '✓';
+            color: #1BBC9B;
+            font-weight: bold;
+        }
+        .prc-card.highlight .prc-features li::before { color: #fff; }
+
+        .prc-btn {
+            background-color: #1BBC9B;
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 5px;
+            font-weight: 700;
+            cursor: pointer;
+            width: 100%;
+            transition: 0.3s;
+        }
+        .prc-btn:hover { background-color: #17a589; }
+
+        /* Last Minute Section */
+        .prc-last-minute {
+            background-color: #f9f9f9;
+            padding: 80px 0;
+            margin: 80px 0;
+        }
+        .prc-lm-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            gap: 60px;
+        }
+        .prc-lm-image {
+            flex: 1;
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+        }
+        .prc-lm-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .prc-lm-content {
+            flex: 1;
+        }
+        .prc-badge {
+            background-color: #555;
+            color: white;
+            font-size: 11px;
+            font-weight: bold;
+            padding: 4px 10px;
+            border-radius: 4px;
+            display: inline-block;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+        .prc-lm-title {
+            font-size: 36px;
+            font-family: 'Poppins', sans-serif;
+            color: #333;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+        .prc-lm-title span {
+            background-color: #1BBC9B;
+            color: white;
+            padding: 0 8px;
+        }
+        .prc-lm-prices {
+            display: flex;
+            align-items: baseline;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+        .prc-lm-old {
+            font-size: 20px;
+            color: #999;
+            text-decoration: line-through;
+            font-weight: bold;
+        }
+        .prc-lm-new {
+            font-size: 32px;
+            color: #333;
+            font-weight: 700;
+            font-family: 'Poppins', sans-serif;
+        }
+        .prc-lm-desc {
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 25px;
+        }
+        .prc-lm-meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 30px;
+            font-size: 13px;
+            color: #555;
+            font-weight: 600;
+        }
+        .prc-lm-meta div {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .prc-lm-meta img { width: 16px; }
+        
+        .prc-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            border-top: 1px solid #ddd;
+            padding-top: 20px;
+        }
+        .prc-author img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+        }
+        .prc-author h4 {
+            margin: 0;
+            color: #333;
+            font-size: 15px;
+        }
+        .prc-author p {
+            margin: 0;
+            color: #888;
+            font-size: 13px;
+        }
+
+        /* Adventure Section */
+        .prc-adventure {
+            max-width: 1200px;
+            margin: 0 auto 100px;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 60px;
+        }
+        .prc-adv-text .prc-btn {
+            display: inline-block;
+            width: auto;
+            padding: 12px 30px;
+            margin-top: 20px;
+        }
+        .prc-adv-desc {
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+        .prc-adv-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .prc-adv-list li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            border-bottom: 1px solid #eee;
+            font-weight: 700;
+            color: #333;
+            transition: color 0.3s;
+            cursor: pointer;
+        }
+        .prc-adv-list li:hover { color: #1BBC9B; }
+        .prc-adv-price {
+            color: #1BBC9B;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .prc-grid { grid-template-columns: 1fr 1fr; }
+            .prc-lm-container { flex-direction: column; }
+            .prc-adventure { grid-template-columns: 1fr; gap: 30px; }
+        }
+        @media (max-width: 768px) {
+            .prc-grid { grid-template-columns: 1fr; }
+            .prc-hero h1 { font-size: 32px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- ТВОЯ РІДНА НАВІГАЦІЯ (Додано "Тарифи") -->
+       <nav>
+    <a href="index.html">
+        <img src="img/logo.png" alt="Tour Greece логотип">
+    </a>
+    <ul>
+        <li class="dropdown"><a href="index.html">Головна</a></li>
+        <li class="dropdown"><a href="archive.html">Тури</a></li>
+        <li class="dropdown"><a href="services.html">Послуги</a></li>
+        <li class="dropdown"><a href="about.html">Про нас</a></li>
+        <li class="dropdown"><a href="blog.html">Блог</a></li>
+        <li><a href="contact.html">Контакти</a></li>
+    </ul>
+    <section class="off-screen-menu">
+        <ul>
+            <li><a href="index.html">Головна</a></li>
+            <li><a href="archive.html">Тури</a></li>
+            <li><a href="services.html">Послуги</a></li>
+            <li><a href="about.html">Про нас</a></li>
+            <li><a href="blog.html">Блог</a></li>
+            <li><a href="contact.html">Контакти</a></li>
+        </ul>
+    </section>
+    <div class="burger">
+        <div class="ham-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+    <button id="modalBtn">Пошук</button>
+</nav>
+
+        <!-- HERO СТОРІНКИ ТАРИФІВ -->
+        <header class="prc-hero">
+            <h1>Prices</h1>
+        </header>
+
+        <main>
+            <!-- Блок 1: Pricing Cards -->
+            <section class="prc-section">
+                <div class="prc-header-center">
+                    <div class="prc-subtitle">Our offers</div>
+                    <h2 class="prc-title">Travel Safe & Secure</h2>
+                    <p style="color: #666; max-width: 600px; margin: 0 auto;">Discover our offers for global coverage of your trip to make you travel without worries and to be able to enjoy your trip.</p>
+                </div>
+
+                <div class="prc-grid">
+                    <!-- Картка 1 -->
+                    <div class="prc-card">
+                        <img src="img/bamboo.png" alt="Travel Insurance" class="prc-card-img">
+                        <div class="prc-card-body">
+                            <div class="prc-card-title">Travel Insurance</div>
+                            <div class="prc-card-price">$ 50.00 <span>/ Trip</span></div>
+                            <p class="prc-card-desc">Coverage for loss of luggage or trip cancellation without justification.</p>
+                            <ul class="prc-features">
+                                <li>Trip Cancellation</li>
+                                <li>Baggage loss</li>
+                                <li>Flexible Dates</li>
+                            </ul>
+                            <button class="prc-btn">More Info</button>
+                        </div>
+                    </div>
+
+                    <!-- Картка 2 (Центральна) -->
+                    <div class="prc-card highlight">
+                        <img src="img/azure.png" alt="Medical Insurance" class="prc-card-img">
+                        <div class="prc-card-body">
+                            <div class="prc-card-title">Medical Insurance</div>
+                            <div class="prc-card-price">$ 65.00 <span>/ Person</span></div>
+                            <p class="prc-card-desc">When you are sick abroad the costs can be very high but we cover it.</p>
+                            <ul class="prc-features">
+                                <li>Doctor Available</li>
+                                <li>Return Costs</li>
+                                <li>Hospital Costs</li>
+                            </ul>
+                            <button class="prc-btn">Request Now</button>
+                        </div>
+                    </div>
+
+                    <!-- Картка 3 -->
+                    <div class="prc-card">
+                        <img src="img/Section → Link → i-parallax-04-package-02.jpeg.png" alt="Full Coverage" class="prc-card-img">
+                        <div class="prc-card-body">
+                            <div class="prc-card-title">Full Coverage</div>
+                            <div class="prc-card-price">$ 73.00 <span>/ Trip</span></div>
+                            <p class="prc-card-desc">Carefree travel with global coverage from medical expenses.</p>
+                            <ul class="prc-features">
+                                <li>Return Costs</li>
+                                <li>Baggage loss</li>
+                                <li>Cancellation</li>
+                            </ul>
+                            <button class="prc-btn">Read More</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Блок 2: Last Minute Tour (Фон на всю ширину) -->
+            <section class="prc-last-minute">
+                <div class="prc-lm-container">
+                    <div class="prc-lm-image">
+                        <img src="img/nara.png" alt="Last Minute Tour">
+                    </div>
+                    <div class="prc-lm-content">
+                        <span class="prc-badge">SALE</span>
+                        <h2 class="prc-lm-title">Last Minute <span>Summer</span> Travel Tours</h2>
+                        <div class="prc-lm-prices">
+                            <span class="prc-lm-old">$ 930</span>
+                            <span class="prc-lm-new">$ 430</span>
+                        </div>
+                        <p class="prc-lm-desc">Come to the agency to take advantage of our last minute summer trips. You can go on a cruise in a wonderful tourist village or take an organized tour at an unrepeatable price with 100% quality. Our offers are updated weekly so don't miss out on this fantastic opportunity.</p>
+                        
+                        <div class="prc-lm-meta">
+                            <div><img src="img/location.png" alt="Loc"> Europe</div>
+                            <div><img src="img/trip_symbol.png" alt="Air"> Air Travel</div>
+                            <div><img src="img/clock_time_destination.png" alt="Time"> Summer Months</div>
+                        </div>
+
+                        <div class="prc-author">
+                            <img src="img/avatar.png" alt="Evelyn Collins">
+                            <div>
+                                <h4>Evelyn Collins</h4>
+                                <p>Experienced Travel Planner</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Блок 3: Adventure list -->
+            <section class="prc-adventure">
+                <div class="prc-adv-text">
+                    <div class="prc-subtitle">Enjoy Traveling</div>
+                    <h2 class="prc-title">Choose your Next Adventure</h2>
+                    <button class="prc-btn">BUTTON</button>
+                </div>
+                <div>
+                    <p class="prc-adv-desc">Our on-board amenities will also enhance your journey. Each tour includes comfortable coach seating with wifi access, snacks and drinks throughout the day, hotel accommodation where needed and convenient pick up points from various locations around the country.</p>
+                    <p class="prc-adv-desc">We also offer great stand-out tours, special discounts and package deals so be sure you get the most out of your trips.</p>
+                    
+                    <ul class="prc-adv-list">
+                        <li>Journey to the Edge of the World <span class="prc-adv-price">$ 250</span></li>
+                        <li>Across Continents with a Cruise <span class="prc-adv-price">$ 590</span></li>
+                        <li>Quest for the Lost City of Gold <span class="prc-adv-price">$ 580</span></li>
+                        <li>The Great North American Road Trip <span class="prc-adv-price">$ 490</span></li>
+                        <li>From the Highlands to the Coast <span class="prc-adv-price">$ 850</span></li>
+                    </ul>
+                </div>
+            </section>
+        </main>
+
+        <!-- ТВІЙ РІДНИЙ ПІДВАЛ -->
+        <footer>
+            <h2>Подорожуйте за межі уяви разом із нашою тревел-агенцією!</h2>
+            <section class="footer_address">
+                <ul>
+                    <li><h2>Адреса</h2></li>
+                    <li><p>Україна</p></li>
+                    <li><p>Івано-Франківськ</p></li>
+                    <li><p>Вовчинецька, 225</p></li>
+                </ul>
+                <div class="footer_icons">
+                    <img src="img/facebook_footer.png" alt="Facebook">
+                    <img src="img/twitter_footer.png" alt="Twitter">
+                    <img src="img/youtube_footer.png" alt="YouTube">
+                </div>
+            </section>
+            <section class="footer_contact">
+                <h2>Контакти</h2>
+                <a href="mailto:info@travel.com" class="footer_email_btn">info@travel.com</a>
+                <p><a href="tel:+380999999999">+38 099 999 99 99</a></p>
+            </section>
+        </footer>
+    </div>
+
+    <!-- Модалка пошуку туру -->
+    <div id="searchModal" class="modal">
+        <div class="modal-content">
+            <button class="close-btn" id="closeModal">&times;</button>
+            <h2>Пошук туру</h2>
+            <form id="tourSearchForm">
+                <label>Введіть напрямок</label>
+                <input type="text" placeholder="Наприклад: Таїланд">
+                <label>Тип подорожі</label>
+                <select>
+                    <option selected>Будь-який</option>
+                    <option>Пляжний відпочинок</option>
+                    <option>Екскурсійний тур</option>
+                    <option>Пригодницький тур</option>
+                    <option>Гірськолижний відпочинок</option>
+                </select>
+                <label>Кількість днів</label>
+                <input type="number" placeholder="Наприклад: 7">
+                <button type="submit" class="search-btn" style="width: 100%; margin-top: 15px; background: #1BBC9B; color: white; border: none; padding: 12px; border-radius: 8px; font-weight: bold; cursor: pointer;">Шукати</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/script.js" defer></script>
+</body>
+</html>
