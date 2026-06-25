@@ -1,0 +1,7 @@
+[schema]
+version = 1
+
+[services.love-travel]
+# Створюємо безкоштовний диск прямо з коду
+[services.love-travel.volumes]
+"/app" = "love-travel-volume"
