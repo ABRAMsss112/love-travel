@@ -4,8 +4,8 @@
   "description": "Tour Greece travel agency backend API",
   "main": "src/server.js",
 "scripts": {
-  "start": "node backend/src/server.js",
-  "dev": "nodemon backend/src/server.js",
+  "start": "node src/server.js",
+  "dev": "nodemon src/server.js",
   "test": "jest --runInBand"
 },
   "jest": {
