@@ -2,19 +2,14 @@ const express = require('express');
 const cors = require('cors');
 const path = require('path');
 
+// Імпортуємо наш новий об'єднаний файл SQLite, який сам усе запустить
 const db = require('./db/database');
-const migrate = require('./db/migrate');
-const seed = require('./db/seed');
 
 const toursRouter = require('./routes/tours');
 const reviewsRouter = require('./routes/reviews');
 const contactRouter = require('./routes/contact');
 const searchRouter = require('./routes/search');
 const bookingsRouter = require('./routes/bookings');
-
-// ── Database init ─────────────────────────────────────────
-migrate(db);
-seed(db);
 
 const app = express();
 const PORT = process.env.PORT || 3000;
